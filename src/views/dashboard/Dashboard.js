@@ -36,12 +36,12 @@ import {
   cifFr,
   cifIn,
   cifPl,
-  cifUs,
   cibTwitter,
   cilCloudDownload,
   cilPeople,
   cilUser,
   cilUserFemale,
+  cifCi,
 } from '@coreui/icons'
 
 import avatar1 from 'src/assets/images/avatars/1.jpg'
@@ -91,11 +91,11 @@ const Dashboard = () => {
     {
       avatar: { src: avatar1, status: 'success' },
       user: {
-        name: 'Yiorgos Avraamu',
+        name: 'Franck Kouame',
         new: true,
-        registered: 'Jan 1, 2021',
+        registered: '01 Jan 2022',
       },
-      country: { name: 'USA', flag: cifUs },
+      country: { name: 'CIV', flag: cifCi },
       usage: {
         value: 50,
         period: 'Jun 11, 2021 - Jul 10, 2021',
@@ -405,11 +405,11 @@ const Dashboard = () => {
                     <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell>User</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
-                    <CTableHeaderCell>Usage</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Payment Method</CTableHeaderCell>
-                    <CTableHeaderCell>Activity</CTableHeaderCell>
+                    <CTableHeaderCell>Membres</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Pays</CTableHeaderCell>
+                    <CTableHeaderCell>Actif</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Status</CTableHeaderCell>
+                    <CTableHeaderCell>Dernière connexion</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
@@ -421,7 +421,7 @@ const Dashboard = () => {
                       <CTableDataCell>
                         <div>{item.user.name}</div>
                         <div className="small text-medium-emphasis">
-                          <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
+                          <span>{item.user.new ? 'New' : 'Recurring'}</span> | Inscrit:{' '}
                           {item.user.registered}
                         </div>
                       </CTableDataCell>
@@ -443,7 +443,7 @@ const Dashboard = () => {
                         <CIcon size="xl" icon={item.payment.icon} />
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="small text-medium-emphasis">Last login</div>
+                        <div className="small text-medium-emphasis">Dernière connexion</div>
                         <strong>{item.activity}</strong>
                       </CTableDataCell>
                     </CTableRow>
