@@ -54,6 +54,102 @@ const _nav = [
       },
     ],
   },
+  {
+    component: CNavGroup,
+    name: 'Federation',
+    to: '/base',
+    icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Créer',
+        to: '/base/accordion',
+      },
+      {
+        component: CNavItem,
+        name: 'Modifier',
+        to: '/base/breadcrumbs',
+      },
+      {
+        component: CNavItem,
+        name: 'Supprimer',
+        to: '/base/cards',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Association',
+    to: '/base',
+    icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Créer',
+        to: '/base/accordion',
+      },
+      {
+        component: CNavItem,
+        name: 'Modifier',
+        to: '/base/breadcrumbs',
+      },
+      {
+        component: CNavItem,
+        name: 'Supprimer',
+        to: '/base/cards',
+      },
+    ],
+  },
+  {
+    component: CNavTitle,
+    name: 'Personnel',
+  },
+  {
+    component: CNavGroup,
+    name: 'President',
+    to: '/base',
+    icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Créer',
+        to: '/base/accordion',
+      },
+      {
+        component: CNavItem,
+        name: 'Modifier',
+        to: '/base/breadcrumbs',
+      },
+      {
+        component: CNavItem,
+        name: 'Supprimer',
+        to: '/base/cards',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Membres',
+    to: '/base',
+    icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Créer',
+        to: '/base/accordion',
+      },
+      {
+        component: CNavItem,
+        name: 'Modifier',
+        to: '/base/breadcrumbs',
+      },
+      {
+        component: CNavItem,
+        name: 'Supprimer',
+        to: '/base/cards',
+      },
+    ],
+  },
 ]
 
 export default _nav
