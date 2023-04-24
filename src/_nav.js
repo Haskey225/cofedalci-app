@@ -3,15 +3,10 @@ import CIcon from '@coreui/icons-react'
 import {
   cilUser,
   cilLocationPin,
-  cilChartPie,
   cilCursor,
-  cilDescription,
   cilUserPlus,
   cilNotes,
-  cilPencil,
-  cilPuzzle,
   cilSpeedometer,
-  cilStar,
   cilSettings,
   cilFork,
 } from '@coreui/icons'
