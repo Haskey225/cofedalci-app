@@ -34,23 +34,28 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Branches',
-    to: '/base',
+    to: '#',
     icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
+        name: 'Liste',
+        to: '/liste-branches',
+      },
+      {
+        component: CNavItem,
         name: 'Créer',
-        to: '/base/accordion',
+        to: '/create-branches',
       },
       {
         component: CNavItem,
         name: 'Modifier',
-        to: '/base/breadcrumbs',
+        to: '/edit-branches',
       },
       {
         component: CNavItem,
         name: 'Supprimer',
-        to: '/base/cards',
+        to: '/delate-branches',
       },
     ],
   },

@@ -28,7 +28,6 @@ const Tables = () => {
               Using the most basic table CoreUI, here&#39;s how <code>&lt;CTable&gt;</code>-based
               tables look in CoreUI.
             </p>
-            <DocsExample href="components/table">
               <CTable>
                 <CTableHead>
                   <CTableRow>
@@ -58,7 +57,6 @@ const Tables = () => {
                   </CTableRow>
                 </CTableBody>
               </CTable>
-            </DocsExample>
           </CCardBody>
         </CCard>
       </CCol>
