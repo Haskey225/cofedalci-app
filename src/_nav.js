@@ -86,7 +86,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Créer',
-        to: '/base/accordion',
+        to: '/forms/layout',
       },
       {
         component: CNavItem,

@@ -48,6 +48,10 @@ const Badges = React.lazy(() => import('./views/notifications/badges/Badges'))
 const Modals = React.lazy(() => import('./views/notifications/modals/Modals'))
 const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 
+//App Screens
+const ListBranche = React.lazy(() => import('./views/branches'))
+const Add = React.lazy(() => import('./views/branches/add/add'))
+
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const routes = [
@@ -95,6 +99,9 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
+  //App screens
+  { path: '/add', name: 'add', element: Add },
+  { path: '/liste-branches', name: 'Liste Branches', element: ListBranche },
 ]
 
 export default routes
