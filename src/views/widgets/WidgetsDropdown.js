@@ -44,7 +44,7 @@ const WidgetsDropdown = () => {
               className="mt-3 mx-3"
               style={{ height: '70px' }}
               data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Jullet'],
                 datasets: [
                   {
                     label: 'My First dataset',
@@ -128,7 +128,7 @@ const WidgetsDropdown = () => {
               className="mt-3 mx-3"
               style={{ height: '70px' }}
               data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Jullet'],
                 datasets: [
                   {
                     label: 'My First dataset',
@@ -211,7 +211,7 @@ const WidgetsDropdown = () => {
               className="mt-3"
               style={{ height: '70px' }}
               data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Jullet'],
                 datasets: [
                   {
                     label: 'My First dataset',
@@ -283,20 +283,20 @@ const WidgetsDropdown = () => {
               style={{ height: '70px' }}
               data={{
                 labels: [
-                  'January',
-                  'February',
-                  'March',
-                  'April',
-                  'May',
-                  'June',
-                  'July',
-                  'August',
-                  'September',
-                  'October',
-                  'November',
-                  'December',
-                  'January',
-                  'February',
+                  'Janvier',
+                  'Fevrier',
+                  'Mars',
+                  'Avril',
+                  'Mai',
+                  'Juin',
+                  'Juillet',
+                  'Aout',
+                  'Septembre',
+                  'Octobe',
+                  'Novembre',
+                  'Decembre',
+                  'Janvier',
+                  'Fevrier',
                   'March',
                   'April',
                 ],
