@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-    CForm,
     CRow,
     CCard,
     CCardHeader,
@@ -12,21 +11,30 @@ import {
     CTableDataCell,
     CTableBody,
     CCol,
-    CButton,
 } from "@coreui/react";
+import { getBranchListe } from "src/Functions/Datas";
+import BranchListCard from "src/components/branch";
 
+const item = {
+    id: 1,
+    name: 'Franck ABo',
+    descriptions: 'moi meme'
+}
 const ListBranche = () => {
+
+    getBranchListe().then(respo => {
+        console.log(respo)
+    })
 
     return (
         <CRow>
             <CCol xs={12}>
                 <CCard className="mb-4">
-                    <CButton >Abouter une branche</CButton>
                     <CCardHeader>
                         <strong>Branches</strong>
                     </CCardHeader>
                     <CCardBody>
-                        
+
                         <CTable>
                             <CTableHead>
                                 <CTableRow>
@@ -37,24 +45,7 @@ const ListBranche = () => {
                                 </CTableRow>
                             </CTableHead>
                             <CTableBody>
-                                <CTableRow>
-                                    <CTableHeaderCell scope="row">1</CTableHeaderCell>
-                                    <CTableDataCell>Branche 1</CTableDataCell>
-                                    <CTableDataCell>....</CTableDataCell>
-                                    <CTableDataCell>2</CTableDataCell>
-                                </CTableRow>
-                                <CTableRow>
-                                    <CTableHeaderCell scope="row">2</CTableHeaderCell>
-                                    <CTableDataCell>Branche 2</CTableDataCell>
-                                    <CTableDataCell>...</CTableDataCell>
-                                    <CTableDataCell>5</CTableDataCell>
-                                </CTableRow>
-                                <CTableRow>
-                                    <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                                    <CTableDataCell>Branche 3</CTableDataCell>
-                                    <CTableDataCell>...</CTableDataCell>
-                                    <CTableDataCell>1</CTableDataCell>
-                                </CTableRow>
+                                <BranchListCard  item={item} />
                             </CTableBody>
                         </CTable>
                     </CCardBody>

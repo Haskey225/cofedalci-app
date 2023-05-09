@@ -1,18 +1,8 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
-  cilBell,
-  cilCalculator,
-  cilChartPie,
-  cilCursor,
-  cilDescription,
-  cilDrop,
   cilFork,
-  cilNotes,
-  cilPencil,
-  cilPuzzle,
   cilSpeedometer,
-  cilStar,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -67,6 +57,66 @@ const _nav = [
     items: [
       {
         component: CNavItem,
+        name: 'Liste',
+        to: '/liste-federation',
+      },
+      {
+        component: CNavItem,
+        name: 'Créer',
+        to: '/create-federation',
+      },
+      {
+        component: CNavItem,
+        name: 'Modifier',
+        to: '/edit-federation',
+      },
+      {
+        component: CNavItem,
+        name: 'Supprimer',
+        to: '/delate-federation',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Association',
+    to: '/base',
+    icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Liste',
+        to: '/liste-association',
+      },
+      {
+        component: CNavItem,
+        name: 'Créer',
+        to: '/create-association',
+      },
+      {
+        component: CNavItem,
+        name: 'Modifier',
+        to: '/edit-association',
+      },
+      {
+        component: CNavItem,
+        name: 'Supprimer',
+        to: '/delate-association',
+      },
+    ],
+  },
+  {
+    component: CNavTitle,
+    name: 'Presidents',
+  },
+  {
+    component: CNavGroup,
+    name: 'Fed Presidents',
+    to: '/base',
+    icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
         name: 'Créer',
         to: '/base/accordion',
       },
@@ -84,14 +134,14 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'Association',
+    name: 'Asso Presidents',
     to: '/base',
     icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
         name: 'Créer',
-        to: '/forms/layout',
+        to: '/base/accordion',
       },
       {
         component: CNavItem,
@@ -107,30 +157,7 @@ const _nav = [
   },
   {
     component: CNavTitle,
-    name: 'Gestionnaires',
-  },
-  {
-    component: CNavGroup,
-    name: 'President',
-    to: '/base',
-    icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Créer',
-        to: '/base/accordion',
-      },
-      {
-        component: CNavItem,
-        name: 'Modifier',
-        to: '/base/breadcrumbs',
-      },
-      {
-        component: CNavItem,
-        name: 'Supprimer',
-        to: '/base/cards',
-      },
-    ],
+    name: 'Membres',
   },
   {
     component: CNavGroup,

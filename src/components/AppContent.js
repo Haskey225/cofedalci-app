@@ -5,7 +5,7 @@ import { CContainer, CSpinner } from '@coreui/react'
 // routes config
 import routes from '../routes'
 
-const AppContent = () => {
+const AppContent =  () => {
   return (
     <CContainer lg>
       <Suspense fallback={<CSpinner color="primary" />}>

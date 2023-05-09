@@ -4,7 +4,7 @@ export const UserContext = createContext();
 
 export function UserContextProvider(props) {
 
-    const [isLoadding, setIsLoadding] = useState(false);
+    const [isLoadding, setIsLoadding] = useState(true);
 
     return (
         <UserContext.Provider>

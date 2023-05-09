@@ -54,6 +54,18 @@ const Add = React.lazy(() => import('./views/branches/add/add'))
 const Delete = React.lazy(() => import('./views/branches/delete/Delete'))
 const Edith = React.lazy(() => import('./views/branches/edith/Edith'))
 
+//Federation screen
+const CreateFederation = React.lazy(()=> import('./views/Federation/Create'))
+const ListeFederation = React.lazy(() => import('./views/Federation/Liste'))
+const DelateFederation = React.lazy(() => import('./views/Federation/Delate'))
+const EditFederation = React.lazy(()=> import('./views/Federation/Edit'))
+
+//Association screens
+const ListeAssociation = React.lazy(() => import('./views/association/Liste'))
+const CreatAssociation = React.lazy(()=> import('./views/association/Create'))
+const EditAssociation = React.lazy(()=> import('./views/association/Edit'))
+const DelateAssociation = React.lazy(()=>import('./views/association/Delate'))
+
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const routes = [
@@ -101,11 +113,24 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
-  //App screens
+
+  //App Branch screens
   { path: '/create-branches', name: 'Ajouter une branche', element: Add },
   { path: '/liste-branches', name: 'Liste des Branches', element: ListBranche },
   { path: '/delate-branches', name: 'Supprimer', element: Delete },
   { path: '/edit-branches', name: 'Modifier', element: Edith },
+
+  //App Fedaration Screens
+  { path: '/create-federation', name: 'Creer une dederation', element: CreateFederation },
+  { path: '/liste-federation', name: 'Liste des federation', element: ListeFederation },
+  { path: '/edit-federation', name: 'Modifier des federation', element: EditFederation },
+  { path: '/delate-federation', name: 'Supprimer des federation', element: DelateFederation },
+
+  //App association screens
+  { path: '/liste-association', name: 'Liste des association', element: ListeAssociation },
+  { path: '/create-association', name: 'Liste des association', element: CreatAssociation },
+  { path: '/edit-association', name: 'Liste des association', element: EditAssociation },
+  { path: '/delate-association', name: 'Liste des association', element: DelateAssociation },
 ]
 
 export default routes
