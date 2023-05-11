@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
     CCard,
@@ -15,7 +15,30 @@ import {
     CButton
 } from "@coreui/react";
 
+import { setFederation } from "src/Functions/Datas";
+
+const fedInitialState = {
+    s_name: '',
+    f_name: '',
+    presi: 0,
+    branch: 0,
+    descricption: ''
+}
 const FederationCreate = () => {
+
+    const [fedState, setFedState] = useState(fedInitialState);
+
+    const handleDataChange = e => {
+        const { name, value } = e.target;
+
+        setFedState({ ...fedState, [name]: value });
+        // console.log(name)
+    }
+
+    const submitFed = () => {
+        setFederation(fedInitialState)
+    }
+
     return (
         <CRow>
             <CCol xs={12}>
@@ -28,19 +51,19 @@ const FederationCreate = () => {
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Short Name</CInputGroupText>
-                                    <CFormInput />
+                                    <CFormInput onChange={(e) => handleDataChange(e)} name='s_name' />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Full Name</CInputGroupText>
-                                    <CFormInput />
+                                    <CFormInput onChange={(e) => handleDataChange(e)} name="f_name" />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>President</CInputGroupText>
-                                    <CFormSelect placeholder="Selectionner une president">
+                                    <CFormSelect onChange={(e) => handleDataChange(e)} name="presi" placeholder="Selectionner une president">
                                         <option>Coul</option>
                                         <option>Coul</option>
                                         <option>Coul</option>
@@ -50,7 +73,7 @@ const FederationCreate = () => {
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Branche</CInputGroupText>
-                                    <CFormSelect>
+                                    <CFormSelect onChange={(e) => handleDataChange(e)} name="branch">
                                         <option>Branche1</option>
                                         <option>Branche1</option>
                                         <option>Branche1</option>
@@ -60,10 +83,10 @@ const FederationCreate = () => {
                             </CCol>
                             <CCol md={12} className="mb-4">
                                 <CFormLabel htmlFor="description"></CFormLabel>
-                                <CFormTextarea id="description" />
+                                <CFormTextarea onChange={(e) => handleDataChange(e)} name="description" id="description" />
                             </CCol>
                             <CCol md={12}>
-                                <CButton>Creer</CButton>
+                                <CButton onClick={() => submitFed()}>Creer</CButton>
                             </CCol>
                         </CRow>
                     </CCardBody>

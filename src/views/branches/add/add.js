@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     CButton,
     CCard,
@@ -10,11 +10,46 @@ import {
     CInputGroup,
     CInputGroupText,
     CRow,
+    CAlert,
 } from '@coreui/react'
 
+import { setBranch } from 'src/Functions/Datas';
+
 const Add = () => {
+    //Allert constant
+    const [visible, setVisible] = useState(false)
+
+
+
+    const [brName, setBrName] = useState('');
+    const [brDescription, setBrDescription] = useState('');
+
+    const handleName = (e) => {
+        setBrName(e.target.value);
+        console.log(e.target.name)
+    }
+    const handleDescription = (e) => {
+        setBrDescription(e.target.value);
+        // console.log(brDescription)
+    }
+
+    const submit = () => {
+
+        setBranch(brName, brDescription);
+
+        setVisible(true)
+        setBrName('');
+        setBrDescription('')
+        setTimeout(() => {
+            setVisible(false)
+        }, 3000);
+    }
+
     return (
         <CRow>
+            <CAlert color="primary" dismissible visible={visible} onClose={() => setVisible(false)}>
+                Banche enregistrer avec succès
+            </CAlert>
             <CCol xs={12}>
                 <CCard className="mb-4">
                     <CCardHeader>
@@ -25,18 +60,18 @@ const Add = () => {
                             <CCol md={6}>
                                 <CInputGroup>
                                     <CInputGroupText>Nom de la branche</CInputGroupText>
-                                    <CFormInput placeholder='Entrer le nom de la branche' />
+                                    <CFormInput name='nom br' value={brName} on onChange={(e) => handleName(e)} placeholder='Entrer le nom de la branche' />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6}>
                                 <CInputGroup >
                                     <CInputGroupText>Description</CInputGroupText>
-                                    <CFormTextarea placeholder='Entrer le nom de la branche' />
+                                    <CFormTextarea name='descripifi br' value={brDescription} onChange={(e) => handleDescription(e)} placeholder='Entrer le nom de la branche' />
                                 </CInputGroup>
                             </CCol>
                         </CRow>
-                        
-                        <CButton>Enregistrer</CButton>
+
+                        <CButton onClick={() => submit()}>Enregistrer</CButton>
                     </CCardBody>
                 </CCard>
             </CCol>
