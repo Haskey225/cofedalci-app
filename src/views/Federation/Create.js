@@ -22,7 +22,7 @@ const fedInitialState = {
     f_name: '',
     presi: 0,
     branch: 0,
-    descricption: ''
+    description: ''
 }
 const FederationCreate = () => {
 

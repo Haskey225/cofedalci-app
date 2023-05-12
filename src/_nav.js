@@ -112,46 +112,36 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Fed Presidents',
-    to: '/base',
+    to: '/Federation/president',
     icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
+        name: 'Liste',
+        to: '/liste-fed-presi',
+      },
+      {
+        component: CNavItem,
         name: 'Créer',
-        to: '/base/accordion',
-      },
-      {
-        component: CNavItem,
-        name: 'Modifier',
-        to: '/base/breadcrumbs',
-      },
-      {
-        component: CNavItem,
-        name: 'Supprimer',
-        to: '/base/cards',
+        to: '/create-fed-presi',
       },
     ],
   },
   {
     component: CNavGroup,
     name: 'Asso Presidents',
-    to: '/base',
+    to: '/association/president',
     icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
+        name: 'Liste',
+        to: '/liste-asso-presi',
+      },
+      {
+        component: CNavItem,
         name: 'Créer',
-        to: '/base/accordion',
-      },
-      {
-        component: CNavItem,
-        name: 'Modifier',
-        to: '/base/breadcrumbs',
-      },
-      {
-        component: CNavItem,
-        name: 'Supprimer',
-        to: '/base/cards',
+        to: '/create-asso-presi',
       },
     ],
   },
@@ -162,23 +152,18 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Membres',
-    to: '/base',
+    to: '/Member',
     icon: <CIcon icon={cilFork} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
+        name: 'Liste',
+        to: '/liste-member',
+      },
+      {
+        component: CNavItem,
         name: 'Créer',
-        to: '/base/accordion',
-      },
-      {
-        component: CNavItem,
-        name: 'Modifier',
-        to: '/base/breadcrumbs',
-      },
-      {
-        component: CNavItem,
-        name: 'Supprimer',
-        to: '/base/cards',
+        to: '/create-member',
       },
     ],
   },

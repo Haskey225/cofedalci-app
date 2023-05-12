@@ -66,6 +66,18 @@ const CreatAssociation = React.lazy(()=> import('./views/association/Create'))
 const EditAssociation = React.lazy(()=> import('./views/association/Edit'))
 const DelateAssociation = React.lazy(()=>import('./views/association/Delate'))
 
+//Member screens
+const CreateMember = React.lazy(() => import ('./views/Members/Create'))
+const ListeMember = React.lazy(() => import('./views/Members/Liste'))
+
+//Association presi
+const ListeAssoPresi = React.lazy(() => import('./views/association/president/Liste'))
+const CreateAssoPresi = React.lazy(() => import('./views/association/president/Create'))
+
+//Fed president
+const ListeFedPresi = React.lazy(() => import('./views/Federation/president/Liste'))
+const CreateFedPresi = React.lazy(() => import('./views/Federation/president/Create'))
+
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const routes = [
@@ -131,6 +143,18 @@ const routes = [
   { path: '/create-association', name: 'Liste des association', element: CreatAssociation },
   { path: '/edit-association', name: 'Liste des association', element: EditAssociation },
   { path: '/delate-association', name: 'Liste des association', element: DelateAssociation },
+  
+  //App member
+  { path: '/create-member', name: 'Ceate member', element: CreateMember },
+  { path: '/liste-member', name: 'Liste des membres', element: ListeMember },
+
+  //App Assopresi
+  { path: '/create-asso-presi', name: 'Creation de presi de association', element: CreateAssoPresi },
+  { path: '/liste-asso-presi', name: 'Liste des presi de association', element: ListeAssoPresi },
+
+  //App FedPresi
+  { path: '/create-fed-presi', name: 'Ceate member', element: CreateFedPresi },
+  { path: '/liste-fed-presi', name: 'Liste des membres', element: ListeFedPresi },
 ]
 
 export default routes
