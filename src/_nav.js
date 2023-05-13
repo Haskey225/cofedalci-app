@@ -37,16 +37,6 @@ const _nav = [
         name: 'Créer',
         to: '/create-branches',
       },
-      {
-        component: CNavItem,
-        name: 'Modifier',
-        to: '/edit-branches',
-      },
-      {
-        component: CNavItem,
-        name: 'Supprimer',
-        to: '/delate-branches',
-      },
     ],
   },
   {
@@ -65,16 +55,6 @@ const _nav = [
         name: 'Créer',
         to: '/create-federation',
       },
-      {
-        component: CNavItem,
-        name: 'Modifier',
-        to: '/edit-federation',
-      },
-      {
-        component: CNavItem,
-        name: 'Supprimer',
-        to: '/delate-federation',
-      },
     ],
   },
   {
@@ -92,16 +72,6 @@ const _nav = [
         component: CNavItem,
         name: 'Créer',
         to: '/create-association',
-      },
-      {
-        component: CNavItem,
-        name: 'Modifier',
-        to: '/edit-association',
-      },
-      {
-        component: CNavItem,
-        name: 'Supprimer',
-        to: '/delate-association',
       },
     ],
   },

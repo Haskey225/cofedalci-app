@@ -5,7 +5,7 @@ import routes from '../routes'
 
 import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
-const AppBreadcrumb = () => {
+const AppBreadcrumb =  () => {
   const currentLocation = useLocation().pathname
 
   const getRouteName = (pathname, routes) => {

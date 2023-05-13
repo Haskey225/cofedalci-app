@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     CCard,
     CCardHeader,
@@ -13,18 +13,79 @@ import {
     CFormTextarea,
     CButton,
 } from "@coreui/react";
+import axios from "axios";
+import { setMember, getBranchListe } from "src/Functions/Datas";
 
+const qs = require('qs');
 
+const initialMemberState = {
+    'name': '',
+    'birth_date': '10/10/1991',
+    'birth_place': '',
+    'nationnality': '',
+    'phone_number': '',
+    'whatsapp': '',
+    'email': '',
+    'community_id': 0,
+    'area_name': 0
+}
 
+const initialActivityState = {
+    'start_date': '10/10/2023',
+    'min_month_ca': '',
+    'max_month_ca': '',
+    'min_month_customer': '',
+    'max_month_customer': '',
+    'total_fix_worker': 0,
+    'total_contract_worker': 0,
+    'total_familly_worker': 0,
+    'total_intern_worker': 0
+}
 export default function Create() {
 
-    const handleDataChange = (e) => {
+    const [memberState, setMemberState] = useState(initialMemberState);
+    const [activityState, setActivityState] = useState(initialActivityState);
+    const [branchLise, setBranchListe] = useState({});
 
+
+    const loadData = () => {
+
+        axios.post('http://localhost/cofedal-api/api/', qs.stringify({
+            'action': 'find',
+            'table': 'branch'
+        })).then(resp => {
+
+            setBranchListe(resp.data)
+            // data = rp.split('-');
+            console.log(resp.data);
+        });
+
+    }
+
+
+    const handleMemberDataChange = (e) => {
+        const { name, value } = e.target;
+        setMemberState({ ...memberState, [name]: value });
+        // console.log(value);
+
+    }
+    const handleActivityDataChange = (e) => {
+        const { name, value } = e.target;
+        setActivityState({ ...activityState, [name]: value });
     }
 
     const submitMember = () => {
 
+        console.log(branchLise)
+
     }
+
+    useEffect(() => {
+        loadData();
+        console.log(branchLise);
+
+    }, []);
+
 
 
 
@@ -47,57 +108,43 @@ export default function Create() {
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Nom</CInputGroupText>
-                                    <CFormInput onChange={(e) => handleDataChange(e)} name='s_name' />
-                                </CInputGroup>
-                            </CCol>
-                            <CCol md={6} className="mb-4">
-                                <CInputGroup>
-                                    <CInputGroupText>Prénoms</CInputGroupText>
-                                    <CFormInput onChange={(e) => handleDataChange(e)} name="f_name" />
+                                    <CFormInput onChange={(e) => handleMemberDataChange(e)} name='name' />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Anniversaire</CInputGroupText>
-                                    <CFormInput type="date" onChange={(e) => handleDataChange(e)} name="f_name" />
+                                    <CFormInput type="date" onChange={(e) => handleMemberDataChange(e)} name="birth_date" />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Lieu de naissance</CInputGroupText>
-                                    <CFormSelect onChange={(e) => handleDataChange(e)} name="presi" placeholder="Selectionner une president">
-                                        <option>Coul</option>
-                                        <option>Coul</option>
-                                        <option>Coul</option>
-                                    </CFormSelect>
+                                    <CFormInput onChange={(e) => handleMemberDataChange(e)} name="birth_place" />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Nationnalité</CInputGroupText>
-                                    <CFormSelect onChange={(e) => handleDataChange(e)} name="presi" placeholder="Selectionner une president">
-                                        <option>Coul</option>
-                                        <option>Coul</option>
-                                        <option>Coul</option>
-                                    </CFormSelect>
+                                    <CFormInput onChange={(e) => handleMemberDataChange(e)} name="nationnality" />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Téléphone</CInputGroupText>
-                                    <CFormInput onChange={(e) => handleDataChange(e)} name="f_name" />
+                                    <CFormInput onChange={(e) => handleMemberDataChange(e)} name="phone_number" />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Whatsapp</CInputGroupText>
-                                    <CFormInput onChange={(e) => handleDataChange(e)} name="f_name" />
+                                    <CFormInput onChange={(e) => handleMemberDataChange(e)} name="whatsapp" />
                                 </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Email</CInputGroupText>
-                                    <CFormInput onChange={(e) => handleDataChange(e)} name="f_name" />
+                                    <CFormInput onChange={(e) => handleMemberDataChange(e)} name="email" />
                                 </CInputGroup>
                             </CCol>
 
@@ -116,8 +163,8 @@ export default function Create() {
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Corps de métier</CInputGroupText>
-                                    <CFormSelect onChange={(e) => handleDataChange(e)} name="presi" placeholder="Selectionner une president">
-                                        <option>Corps</option>
+                                    <CFormSelect onChange={(e) => handleActivityDataChange(e)} name="association" >
+                                        <option>Selction du Corps de metiers</option>
                                         <option>Corps</option>
                                         <option>Corps</option>
                                     </CFormSelect>
@@ -126,14 +173,20 @@ export default function Create() {
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Branche</CInputGroupText>
-                                    <CFormInput readOnly style={{ backgroundColor: 'c4c4c4', color: 'white' }} name='s_name' />
-                                </CInputGroup>
+                                    <CFormSelect onChange={(e) => handleActivityDataChange(e)} name="branch" >
+                                        <option>Branch</option>
+                                        {
+                                            branchLise ? Object.keys(branchLise).map((item, index) => {
+                                                <option>{branchLise[item].name} </option>
+                                            }) : <p>Loading</p>
+                                        }
+                                    </CFormSelect>                                </CInputGroup>
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Spécialité</CInputGroupText>
-                                    <CFormSelect onChange={(e) => handleDataChange(e)} name="presi" placeholder="Selectionner une president">
-                                        <option>Spécialité</option>
+                                    <CFormSelect onChange={(e) => handleActivityDataChange(e)} name="speciality">
+                                        <option>Selectionnez une spécialité</option>
                                         <option>Spécialité</option>
                                         <option>Spécialité</option>
                                     </CFormSelect>
@@ -142,7 +195,7 @@ export default function Create() {
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Debut d activité</CInputGroupText>
-                                    <CFormInput onChange={(e) => handleDataChange(e)} name="f_name" />
+                                    <CFormInput name="start_date" onChange={(e) => handleActivityDataChange(e)} />
                                 </CInputGroup>
                             </CCol>
 
@@ -152,13 +205,13 @@ export default function Create() {
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
                                             <CInputGroupText>Minimum</CInputGroupText>
-                                            <CFormInput />
+                                            <CFormInput type="numeric" name="min_month_ca" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
                                             <CInputGroupText>Maximum</CInputGroupText>
-                                            <CFormInput />
+                                            <CFormInput type="numeric" name="max_month_ca" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                 </CRow>
@@ -169,13 +222,13 @@ export default function Create() {
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
                                             <CInputGroupText>Minimum</CInputGroupText>
-                                            <CFormInput />
+                                            <CFormInput type="numeric" name="min_month_customer" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
                                             <CInputGroupText>Maximum</CInputGroupText>
-                                            <CFormInput />
+                                            <CFormInput type="numeric" name='max_month_customer' onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                 </CRow>
@@ -186,14 +239,14 @@ export default function Create() {
                                     <strong>Salariers</strong>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
-                                            <CInputGroupText>Homme</CInputGroupText>
-                                            <CFormInput />
+                                            <CInputGroupText>Total</CInputGroupText>
+                                            <CFormInput type="numeric" name="total_fix_worker" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
-                                            <CInputGroupText>Femmes</CInputGroupText>
-                                            <CFormInput />
+                                            <CInputGroupText>nombre de femme</CInputGroupText>
+                                            <CFormInput type="numeric" name="women_fix" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                 </CRow>
@@ -201,14 +254,14 @@ export default function Create() {
                                     <strong>Contractuel</strong>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
-                                            <CInputGroupText>Homme</CInputGroupText>
-                                            <CFormInput />
+                                            <CInputGroupText>Total</CInputGroupText>
+                                            <CFormInput type="numeric" name="total_contract_worker" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
-                                            <CInputGroupText>Femmes</CInputGroupText>
-                                            <CFormInput />
+                                            <CInputGroupText>Nombre de femme</CInputGroupText>
+                                            <CFormInput type="numeric" name="women_contract" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                 </CRow>
@@ -216,14 +269,14 @@ export default function Create() {
                                     <strong>Aides familliales</strong>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
-                                            <CInputGroupText>Homme</CInputGroupText>
-                                            <CFormInput />
+                                            <CInputGroupText>Total</CInputGroupText>
+                                            <CFormInput type="numeric" name="total_familly_worker" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
-                                            <CInputGroupText>Femmes</CInputGroupText>
-                                            <CFormInput />
+                                            <CInputGroupText>Nombre de femme</CInputGroupText>
+                                            <CFormInput type="numeric" name="women_familly" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                 </CRow>
@@ -231,14 +284,14 @@ export default function Create() {
                                     <strong>Stagiare</strong>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
-                                            <CInputGroupText>Homme</CInputGroupText>
-                                            <CFormInput />
+                                            <CInputGroupText>Total</CInputGroupText>
+                                            <CFormInput type="numeric" name="total_intern_worker" onChange={(e) => handleActivityDataChange(e)} />
                                         </CInputGroup>
                                     </CCol>
                                     <CCol md={6} className="mb-4">
                                         <CInputGroup>
-                                            <CInputGroupText>Femmes</CInputGroupText>
-                                            <CFormInput />
+                                            <CInputGroupText>Nombre de femme</CInputGroupText>
+                                            <CFormInput type="numeric" />
                                         </CInputGroup>
                                     </CCol>
                                 </CRow>
@@ -283,7 +336,7 @@ export default function Create() {
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
                                     <CInputGroupText>Commune</CInputGroupText>
-                                    <CFormSelect defaultValue={''} placeholder="Selectionnez un district">
+                                    <CFormSelect name='community_id' placeholder="Selectionnez un district">
                                         <option>Selectionnez votre Commune</option>
                                         <option>Commune 1</option>
                                         <option>Commune 1</option>
@@ -292,23 +345,13 @@ export default function Create() {
                             </CCol>
                             <CCol md={6} className="mb-4">
                                 <CInputGroup>
-                                    <CInputGroupText>Sous-Pefecture</CInputGroupText>
-                                    <CFormSelect defaultValue={'Entrez'} placeholder="Selectionnez un district">
-                                        <option>Selectionnez votre Sous prefecture</option>
-                                        <option>Sous prefecture 1</option>
-                                        <option>Sous prefecture 1</option>
-                                    </CFormSelect>
-                                </CInputGroup>
-                            </CCol>
-                            <CCol md={6} className="mb-4">
-                                <CInputGroup>
                                     <CInputGroupText>Quartier/Village</CInputGroupText>
-                                    <CFormInput placeholder="Saisir le nom de son quartier ou son village" onChange={(e) => handleDataChange(e)} name='s_name' />
+                                    <CFormInput placeholder="Saisir le nom de son quartier ou son village" name="area_name" />
                                 </CInputGroup>
                             </CCol>
                         </CRow>
 
-                      
+
 
                     </CCardBody>
 
@@ -320,43 +363,43 @@ export default function Create() {
                         <CRow>
                             <strong>Federation de base</strong>
                             <CCol md={4}>
-                               <CInputGroup>
+                                <CInputGroup>
                                     <CInputGroupText>Nom</CInputGroupText>
                                     <CFormInput readOnly name="" />
-                                </CInputGroup> 
+                                </CInputGroup>
                             </CCol>
                             <CCol md={4}>
-                               <CInputGroup>
+                                <CInputGroup>
                                     <CInputGroupText>President</CInputGroupText>
                                     <CFormInput readOnly name="" />
-                                </CInputGroup> 
+                                </CInputGroup>
                             </CCol>
                             <CCol md={4}>
-                               <CInputGroup>
+                                <CInputGroup>
                                     <CInputGroupText>Contact</CInputGroupText>
                                     <CFormInput readOnly name="" />
-                                </CInputGroup> 
+                                </CInputGroup>
                             </CCol>
                         </CRow>
                         <CRow>
                             <strong>Association de base</strong>
                             <CCol md={4}>
-                               <CInputGroup>
+                                <CInputGroup>
                                     <CInputGroupText>Nom</CInputGroupText>
                                     <CFormInput readOnly name="" />
-                                </CInputGroup> 
+                                </CInputGroup>
                             </CCol>
                             <CCol md={4}>
-                               <CInputGroup>
+                                <CInputGroup>
                                     <CInputGroupText>President</CInputGroupText>
                                     <CFormInput readOnly name="" />
-                                </CInputGroup> 
+                                </CInputGroup>
                             </CCol>
                             <CCol md={4}>
-                               <CInputGroup>
+                                <CInputGroup>
                                     <CInputGroupText>Contact</CInputGroupText>
                                     <CFormInput readOnly name="" />
-                                </CInputGroup> 
+                                </CInputGroup>
                             </CCol>
                         </CRow>
                     </CCardBody>

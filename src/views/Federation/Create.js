@@ -36,7 +36,7 @@ const FederationCreate = () => {
     }
 
     const submitFed = () => {
-        setFederation(fedInitialState)
+        setFederation(fedState)
     }
 
     return (

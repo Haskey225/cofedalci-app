@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     CRow,
     CCol,
@@ -10,11 +10,30 @@ import {
     CFormInput,
     CFormTextarea,
     CFormSelect,
+    CButton,
 
 } from '@coreui/react';
 
+import { setAssociation } from "src/Functions/Datas";
 
+const assoInitialState = {
+    asso_name: "",
+    fed_name: "",
+    asso_description: ""
+}
 const CreateAssociation = () => {
+
+    const [assoState, setAssoState] = useState(assoInitialState);
+
+    const handleCahnge = (e) => {
+        const { name, value } = e.target;
+
+        setAssoState({ ...assoState, [name]: value });
+    }
+
+    const assoSubmit = () => {
+        setAssociation(assoState);
+    }
 
     return (
         <CRow>
@@ -29,14 +48,14 @@ const CreateAssociation = () => {
                                 <CCol md={6} className="mb-4">
                                     <CInputGroup>
                                         <CInputGroupText>Nom</CInputGroupText>
-                                        <CFormInput />
+                                        <CFormInput onChange={(e) => handleCahnge(e)} name="asso_name" />
                                     </CInputGroup>
                                 </CCol>
-                                
+
                                 <CCol md={6} className="mb-4">
                                     <CInputGroup>
                                         <CInputGroupText>Fédération parente</CInputGroupText>
-                                        <CFormSelect>
+                                        <CFormSelect onChange={(e) => handleCahnge(e)} name='fed_name'>
                                             <option>Selectionnez la fed parente</option>
                                             <option>Fed 1</option>
                                             <option>Fed 2</option>
@@ -46,10 +65,11 @@ const CreateAssociation = () => {
                                 <CCol md={12} className="mb-4">
                                     <CInputGroup>
                                         <CInputGroupText>Description</CInputGroupText>
-                                        <CFormTextarea />
+                                        <CFormTextarea onChange={(e) => handleCahnge(e)} name="asso_description" />
                                     </CInputGroup>
                                 </CCol>
                             </CRow>
+                            <CButton onClick={() => assoSubmit()}>Créer</CButton>
                         </CCol>
                     </CCardBody>
                 </CCard>
