@@ -57,29 +57,26 @@ class ListBranche extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: null
+            datas: null
         }
     }
 
-    componentDidMount() {
-        this.getData();
-    }
-    // getBranchListe().then(respo => {
-    //     console.log(respo)
-    // })
-    getData = async () => {
-        await axios.post("http://localhost/cofedal-api/api/", qs.stringify({
+   async componentDidMount() {
+       await axios.post("http://localhost/cofedal-api/api/", qs.stringify({
             'action': 'find',
             'table': 'branch'
         })).then(resp => {
-            const datas = (resp.data);
-            // console.log(data);
-            this.setState({ data: datas })
-            console.log(this.state.data);
+            console.log(resp.data)
+            this.setState({ datas: resp.data })
+            console.log(this.state.datas);
         }).catch(ero => {
             console.log(ero)
         })
     }
+    // getBranchListe().then(respo => {
+    //     console.log(respo)
+    // })
+
 
 
     shouldComponentUpdate() {
@@ -117,13 +114,14 @@ class ListBranche extends Component {
                                         </CTableRow>
                                     </CTableHead>
                                     <CTableBody>
-
-                                        <CTableRow>
-                                            <CTableHeaderCell scope="col">id</CTableHeaderCell>
-                                            <CTableHeaderCell scope="col">Nom</CTableHeaderCell>
-                                            <CTableHeaderCell scope="col">Description</CTableHeaderCell>
-                                            <CTableHeaderCell scope="col">Nbrs de Fed</CTableHeaderCell>
-                                        </CTableRow>
+                                        {this.state.datas && Object.keys(this.state.datas).map((item, index) =>
+                                            <CTableRow key={index}>
+                                                <CTableHeaderCell scope="col">id</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Nom</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Description</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Nbrs de Fed</CTableHeaderCell>
+                                            </CTableRow>
+                                        )}
                                     </CTableBody>
                                 </CTable>
                             </CCardBody>
